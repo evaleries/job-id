@@ -1,6 +1,6 @@
-# jobid
+# JOB.ID
 
-A new Flutter project.
+Aplikasi pencari kerja di Indonesia.
 
 ## Getting Started
 
