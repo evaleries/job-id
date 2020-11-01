@@ -8,7 +8,7 @@ const cPrimaryLightColor = Color(0xFFFFECDF);
 const cPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
-  colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
+  colors: [Color(0xFF2578E2), Color(0xFF2828E2)],
 );
 const cSecondaryColor = Color(0xFF979797);
 const cTextColor = Color(0xFF757575);
