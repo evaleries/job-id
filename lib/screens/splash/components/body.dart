@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:jobid/constants.dart';
+import 'package:jobid/screens/auth/login/login_screen.dart';
 import 'package:jobid/size_config.dart';
 import 'package:jobid/screens/splash/components/splash_content.dart';
 import 'package:jobid/components/button.dart';
@@ -16,11 +17,11 @@ class _BodyState extends State<Body> {
   List<Map<String, String>> splashs = [
     {'text': "Selamat datang di JOB.ID", 'image': "assets/images/splash_1.png"},
     {
-      'text': "Kami dapat membantu anda\nmencari pekerjaan dengan mudah.",
+      'text': "JOB.ID dapat membantu anda\nmencari pekerjaan dengan mudah.",
       'image': "assets/images/splash_2.png"
     },
     {
-      'text': "Kami dapat menampilkan\npekerjaan yang relevan untuk anda.",
+      'text': "JOB.ID dapat menampilkan\npekerjaan yang relevan untuk anda.",
       'image': "assets/images/splash_3.png"
     },
   ];
@@ -64,9 +65,9 @@ class _BodyState extends State<Body> {
                     ),
                     Spacer(),
                     DefaultButton(
-                      text: 'Lanjut',
+                      text: 'LANJUT',
                       press: () {
-                        // @TODO: Go to login screen.
+                        Navigator.pushNamed(context, LoginScreen.routeName);
                       },
                     ),
                     Spacer(),
