@@ -91,17 +91,12 @@ class _RegisterFormState extends State<RegisterForm> {
       onChanged: (nama) {
         if (nama.isEmpty) {
           return 'Nama anda kosong!.';
-        } else if (!validateEmail(nama)) {
-          return 'Nama Anda tidak valid!';
-        }
+        } 
       },
       validator: (nama) {
         if (nama.isEmpty) {
           return 'Nama Anda kosong!.';
-        } else if (!validateEmail(nama)) {
-          return 'Nama Anda tidak valid!';
-        }
-
+        } 
         return null;
       },
       decoration: InputDecoration(
