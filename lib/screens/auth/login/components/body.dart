@@ -41,12 +41,27 @@ class _BodyState extends State<Body> {
                   SizedBox(height: SizeConfig.screenHeight * 0.05),
                   LoginForm(),
                   SizedBox(height: SizeConfig.screenHeight * 0.05),
-                  GestureDetector(
-                      onTap: () {
-                        // @TODO: Move to register screen
-                        // Navigator.pop(context);
-                      },
-                      child: Text('Belum punya akun? Daftar seakrang'))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Belum punya akun?',
+                      ),
+                      SizedBox(width: SizeConfig.screenWidth * 0.05),
+                      InkWell(
+                        onTap: () {
+                          Navigator.of(context).pushNamed('/register');
+                        },
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              decoration: TextDecoration.underline),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             )),
