@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:jobid/screens/auth/login/components/login_form.dart';
+import 'package:jobid/screens/auth/register/components/register_form.dart';
 import 'package:jobid/size_config.dart';
 
 class Body extends StatefulWidget {
