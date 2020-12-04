@@ -38,8 +38,8 @@ class _RegisterFormState extends State<RegisterForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // @TODO: Move to dashboard.
-                print('Should move to dashboard');
+                // @TODO: Move to login.
+                print('Should move to login');
               }
             },
           )
@@ -91,12 +91,12 @@ class _RegisterFormState extends State<RegisterForm> {
       onChanged: (nama) {
         if (nama.isEmpty) {
           return 'Nama anda kosong!.';
-        } 
+        }
       },
       validator: (nama) {
         if (nama.isEmpty) {
           return 'Nama Anda kosong!.';
-        } 
+        }
         return null;
       },
       decoration: InputDecoration(
@@ -169,8 +169,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 borderRadius: BorderRadius.circular(textFieldRadius)),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(textFieldRadius)),
-            labelText: 'Password',
-            hintText: 'Password anda',
+            labelText: 'Confirm Password',
+            hintText: 'Ulangi Password anda',
             floatingLabelBehavior: FloatingLabelBehavior.always,
             prefixIcon: Icon(Icons.lock)));
   }
