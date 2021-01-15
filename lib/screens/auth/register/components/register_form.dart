@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobid/components/button.dart';
 import 'package:jobid/size_config.dart';
+import 'package:jobid/screens/home/home_screen.dart';
 
 class RegisterForm extends StatefulWidget {
   @override
@@ -38,8 +39,7 @@ class _RegisterFormState extends State<RegisterForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // @TODO: Move to login.
-                print('Should move to login');
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
               }
             },
           )

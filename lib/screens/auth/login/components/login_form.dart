@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobid/components/button.dart';
 import 'package:jobid/size_config.dart';
+import 'package:jobid/screens/home/home_screen.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -28,8 +29,7 @@ class _LoginFormState extends State<LoginForm> {
             press: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                // @TODO: Move to dashboard.
-                print('Should move to dashboard');
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
               }
             },
           )

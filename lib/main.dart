@@ -11,7 +11,7 @@ class JobApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: '',
+      title: 'JOB.ID',
       theme: theme(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
