@@ -15,46 +15,64 @@ class MapBody extends StatefulWidget {
 }
 
 class _MapBodyState extends State<MapBody> {
-  Completer<GoogleMapController> _controller = Completer();
+  double latIndo;
+  double longIndo;
+  LatLng latLngIndo;
 
-  LatLng _center = LatLng(-4.52063, 122.03462);
+  @override
+  void initState() {
+    super.initState();
+
+    print(widget.data.company.location);
+    getCoordinate().then((coordinate) => setState(() {
+          latLngIndo = coordinate;
+        }));
+  }
+
+  Completer<GoogleMapController> _controller = Completer();
 
   void _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
   }
 
-  getCoordinate() async {
-    print(widget.data.company.location['address']);
+  Future<LatLng> getCoordinate() async {
     if (widget.data.company.location['address'] == null) {
-      return false;
+      return Future.error('Invalid address');
     }
 
     final address = widget.data.company.location['address'];
     var addresses = await Geocoder.local.findAddressesFromQuery(address);
     var firstAddr = addresses.first;
-    print(firstAddr);
-    print(firstAddr.coordinates);
+
+    if (firstAddr.coordinates == null) {
+      var query =
+          '${address.toString().split(',').first}, ${address.locationSubCategory['ind']}';
+      var nearby = await Geocoder.local.findAddressesFromQuery(query);
+      var firstNearby = nearby.first;
+      if (firstNearby.coordinates == null) {
+        return LatLng(-4.52063, 122.03462);
+      }
+      return LatLng(
+          firstNearby.coordinates.latitude, firstNearby.coordinates.longitude);
+    }
+
+    return LatLng(
+        firstAddr.coordinates.latitude, firstAddr.coordinates.longitude);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FutureBuilder(
-      future: getCoordinate(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          print(snapshot);
-        }
-        if (snapshot.hasError) {
-          print(snapshot.error);
-        }
-        return GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: snapshot.hasData ? '' : _center,
-          ),
-        );
-      },
-    ));
+    if (latLngIndo != null) {
+      return Scaffold(
+          body: GoogleMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: CameraPosition(
+          target: latLngIndo,
+          zoom: 15.0,
+        ),
+      ));
+    } else {
+      return Center(child: CircularProgressIndicator());
+    }
   }
 }
