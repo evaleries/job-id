@@ -91,17 +91,16 @@ class DetailContent extends StatelessWidget {
                     .map((position) => DetailItem(data: position['ind']))
                     .toList(),
               SizedBox(height: kSpacingUnit * 2),
-              Text('Informasi Prusahaan', style: kSubTitleTextStyle),
+              Text('Informasi Perusahaan', style: kSubTitleTextStyle),
               if (data.company.overview != null)
-                Text(data.company.overview,
-                    style: kCaptionTextStyle.copyWith(
-                        color: kPrimaryTextColor, fontWeight: FontWeight.w400)),
+                Html(data: data.company.overview),
               SizedBox(height: kSpacingUnit * 2),
               if (data.company.location['address'] != null)
                 Text(
                   'Alamat: ${data.company.location['address']}',
                   style: kCaptionTextStyle.copyWith(
                     color: kPrimaryTextColor,
+                    fontSize: 15,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
